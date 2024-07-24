@@ -38,7 +38,7 @@
   let bcolor = colors[Math.floor(Math.random() * colors.length)];</script>
 
 <div class="container">
-  <h2 class="site-header">Teodosin's Digital Fabrication Portfolio</h2>
+  <h2 class="site-header">Teodosin</h2>
 
   <TagFilter {categories} on:categoryselected={handlecategoryselected} />
 

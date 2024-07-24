@@ -19,5 +19,7 @@ const entries = files
   .filter((/** @type {any} */ file) => path.extname(file) === '.md')
   .map((/** @type {any} */ file) => `/${path.basename(file, '.md')}`);
 
+console.log("Length of entries:", entries.length);
+
 // Write the entries to a JSON file
 fs.writeFileSync(path.resolve(__dirname, 'prerender-entries.json'), JSON.stringify(entries));

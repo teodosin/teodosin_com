@@ -1,7 +1,12 @@
-	Words goal: 20 000 ish
-	Citation format: 
-	[?] <- this means citation needed
-	== == <- my comments enclosed in these
+---
+title: "Master's Thesis"
+date: "2024-07-24"
+description: "A nodal file browser for organising creative projects."
+categories: ["thesis"]
+tags: ["no-banner"]
+---
+
+# Table of Contents
 
 # 1 - Introduction
 
@@ -64,13 +69,13 @@ There are many mediums that could be covered in the following examples. The purp
 
 Singular images, such as paintings, drawings, photographs and so on, are entirely in view at once. The viewer is free to look at whatever part of them they wish, in whatever order and pace they desire. There is no hidden information. If the creative knows what patterns to look at and evaluate, they can immediately do so. An image can still be incredibly complex, but that complexity is made manageable by the virtue of there being no parts of it that can fall out of sight and thus be ignored or forgotten. 
 
-[An image.](masters_thesis/211_painting.png)
+![An image.](masters_thesis/211_painting.png)
 
 These observations apply to both the creative and the audience of an image. A creative may influence the viewer's gaze by carefully organising the visual patterns, using techniques such as contrast, harmony, regularity, variation, and many more. [3]. They can not be fully dictated, as the viewer always has a choice to look somewhere else. 
 
 Contrast the singular image with a comic book. The entire contents of one can be arranged on a wall, so it fulfils the criteria that the whole work can be visible at once. Still, there are two main elements that make it more difficult and thus time consuming to understand, aside from the obvious potential increase in complexity. They are the decrease in clear visual hierarchy, and the introduction of text. 
 
-[Pages of a comic laid out in a grid.](masters_thesis/211_comic_pages.png)
+![Pages of a comic laid out in a grid.](masters_thesis/211_comic_pages.png)
 
 With a comic, focusing in on a specific pattern in the imagery or the story already requires parsing through the entire thing, and making note of or directly adjusting the relevant occurrences. 
 
@@ -84,13 +89,13 @@ Novels and other formats of pure writing have, predictably, the same characteris
 
 Film builds on these complexities and adds another dimension. It should be evident that introducing movement greatly increases the amount of visual information. With a film, even if it is a short animation, it becomes unfeasible to lay out all its frames out on a wall. Even one minute of film, at a standard rate of 24 frames (images) a second, contains 1440 individual frames. To be at all comprehensible, that visual information must be compressed. Commonly the frames are grouped into the scenes or shots they are a part of, or according to a major action in a shot. A frame is chosen from that group to represent it. A major change in composition commonly signals a change in group. [4] This is acceptable, because most of the visual information within a single shot is redundant. 
 
-[A films storyboard with dialogue and text descriptions.](masters_thesis/211_film_storyboard.png)
+![A films storyboard with dialogue and text descriptions.](masters_thesis/211_film_storyboard.png)
 
 In this progression of examples, film is the first to contain sound. Sound is by definition hard to visualise. It encompasses our second major sense[?], an entirely different way of perception. Inherently temporal, sound demands that it is perceived at _its_ pace. We can not direct our ears to hear different parts of a song like we can point our eyes at any part of a painting. The sound waves must be actually produced. 
 
 To make sound "glanceable", it must be converted to a visual representation, and all possible conversions are lossy. Waveforms tell you the volumes throughout the sound, but not what it sounds like. Sounds and music can be labelled, or they can be mapped to sheet music or a piano roll. But no matter the representation, some information will have been selected, and the rest will have been discarded. Here appears again the idea of selections, the topic of the next section.
 
-[211_sound_visualised](masters_thesis/211_sound_visualised.png)
+![211_sound_visualised](masters_thesis/211_sound_visualised.png)
 
 
 
@@ -200,7 +205,7 @@ This same distortion happens with cognitive reference points, such as a Picasso 
 
 What type of visualisation matches these characteristics? Node graphs. More commonly known as mind-maps. Tversky says: "Boxes and links turn out to underlie an enormous swath of our thinking, maybe all of it." [2]. She goes on to describe the variety of forms that this simple idea can take. The fundamental building blocks of boxes and links can be arranged in an infinite amount of ways. They are incredibly flexible, so much so that other visualisation types can also be expressed in terms of boxes and links of different shapes and sizes. From this point on, boxes will be referred to as nodes and links as edges, to better conform to the terminology used in software and computer science. 
 
-[310_tree_and_map](masters_thesis/310_tree_and_map.png)
+![310_tree_and_map](masters_thesis/310_tree_and_map.png)
 
 
 What is a map, if not a node graph of place names with the edges hidden and a background image?
@@ -233,7 +238,7 @@ The choice between global and local graph representations often depends on the s
 
 Consider a graph for visualising the appearances of characters in scenes. In this extremely simple example, there are five scenes and three characters. Each appearance is denoted by an edge from a character to a scene. 
 
-[322_chars_and_scenes](masters_thesis/322_chars_and_scenes.png)
+![322_chars_and_scenes](masters_thesis/322_chars_and_scenes.png)
 
 Multiple pieces of information can be gleamed from this image. One can see which character appears in which scene, but also how many scenes a character appears in, and how many characters appear in a scene. Because of the many-to-many connections present in this figure, it is categorised as a "global" or allocentric graph. If it were to select a single node and omit all except its direct connections, it would become a local graph centered around that node. 
 
@@ -241,7 +246,7 @@ Multiple pieces of information can be gleamed from this image. One can see which
 
 With few nodes in the graph, it is readily understandable. Adding more nodes for a longer film with more characters would quickly increase its complexity. 
 
-[322_morecharscenes](masters_thesis/322_morecharscenes.png)
+![322_morecharscenes](masters_thesis/322_morecharscenes.png)
 
 ==Insert many, many more examples here.==
 
@@ -389,7 +394,7 @@ Every file can itself be treated as a tree data structure of some width and dept
 
 The Scalable Vector Graphics (SVG) file format can be used to illustrate this feature. An SVG file consists of a hierarchy of elements, which can be vector shapes or raster images. Either of these types of images could be previewed by themselves, just like their assembled form. 
 
-[430_owl](masters_thesis/430_owl.png)
+![430_owl](masters_thesis/430_owl.png)
 
 The SVG code for the above vector image of an owl looks like the following: 
 
@@ -416,7 +421,7 @@ The SVG code for the above vector image of an owl looks like the following:
 
 SVG is based on the broader XML format, where elements are listed hierarchically. Here, the circles that comprise each eye are grouped together, and both eye groups are also grouped together. The eyes are further grouped together with the beak and the head. In pure code, even to people accustomed to reading it, it takes a moment to build an understanding of the structure. A hypothetical node representation could look like this:
 
-[430_owl_graph](masters_thesis/430_owl_graph.png)
+![430_owl_graph](masters_thesis/430_owl_graph.png)
 
  Implementing a generalised system for converting files to nodes would be impossible, because file types are arbitrary and new ones can be made at any time by anyone. But an architecture could be developed that would make it relatively easy to add support for specific file types. 
  
@@ -431,7 +436,7 @@ Composition would be enabled by the introduction of a new class of node called o
 
 Consider the example of cropping an image. It is a highly common operation for all types of users, not just creatives. It is also simple to conceptualise as an operator chain of just four nodes, including the starting image. The starting image is connected to the input of the crop operator, and that operator's output is connected to the input of a blank image node. Evaluating the chain produces a new image that is cropped following the specific instructions in the crop operator. 
 
-[A procedure chain to crop an image](masters_thesis/440_crop.png)
+![A procedure chain to crop an image](masters_thesis/440_crop.png)
 
 This feature could also be implemented directly and added to an image node's context menu. But leveraging the operator abstraction has benefits, because then this operation can be made part of a longer chain of procedures, by the user themselves, and the whole chain can automatically be recalculated whenever its inputs change. 
 
