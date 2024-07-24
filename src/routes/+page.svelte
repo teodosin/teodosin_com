@@ -34,8 +34,18 @@
 
   let selectedPost = null;
 
-  let colors = ['#6B8E23', '#556B2F', '#483D8B', '#4B0082', '#696969', '#800000', '#8B4513'];
-  let bcolor = colors[Math.floor(Math.random() * colors.length)];</script>
+  let colors = [
+    "#6B8E23",
+    "#556B2F",
+    "#483D8B",
+    "#4B0082",
+    "#696969",
+    "#800000",
+    "#8B4513",
+  ];
+  let bcolor = colors[Math.floor(Math.random() * colors.length)];
+
+</script>
 
 <div class="container">
   <h2 class="site-header">Teodosin</h2>

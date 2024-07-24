@@ -12,14 +12,19 @@ export async function load({ params }) {
         // @ts-ignore
         const { title, date, categories, tags, cover } = post.metadata;
         // @ts-ignore
+        const customStyle = post.metadata?.customStyle;
+        // @ts-ignore
         const content = post.default;
+        
         return {
             content,
             title,
             date,
             categories,
             tags,
-            cover
+            cover,
+            // @ts-ignore
+            customStyle,
         };
     } catch (error) {
         console.error(`Error loading post ${params.slug}:`, error);

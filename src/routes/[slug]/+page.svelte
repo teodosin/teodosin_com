@@ -63,7 +63,17 @@
     const hasNoBannerTag = data.tags && data.tags.includes("no-banner");
 
     let scroll = 0;
+
+    let customStyle = data.content.customStyle;
+
+    console.log("Custom style is: " + customStyle);
 </script>
+
+<svelte:head>
+    {#if customStyle}
+        <link rel="stylesheet" href="/styles/{customStyle}.css" />
+    {/if}
+</svelte:head>
 
 <svelte:window bind:scrollY={scroll} />
 

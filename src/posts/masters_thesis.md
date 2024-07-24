@@ -4,13 +4,14 @@ date: "2024-07-24"
 description: "A nodal file browser for organising creative projects."
 categories: ["thesis"]
 tags: ["no-banner"]
+customStyle: "thesis-styles"
 ---
 
 # Table of Contents
 
 # 1 - Introduction
 
-Every creative work is an arrangement of its constituent elements. A work may consist of just a few, or hundreds, or hundreds of thousands, of individual elements. The process of creating a work involves a myriad of design decisions about how its elements relate to one another, and what they reference externally, such as other works and the real world. Characters, colours, symbols, concepts, motifs, plot points, compositions, and so on, can all be referred to as elements. They can be anything, and they're what a work is made out of. 
+Every creative work is an arrangement of its constituent elements. A work may consist of just a few, or hundreds, or hundreds of thousands, of individual elements. The process of creating a work involves a myriad of design decisions about how its elements relate to one another, and what they reference externally, such as other works and the real world. Characters, colours, symbols, concepts, motifs, plot points, compositions, and so on, can all be referred to as elements. They can be anything, and they're what a work is made out of.
 
 The final work is an arrangement of its elements in some cohesive layout. They are placed in overlapping and nested patterns, which the creative individual or team (both from now referred to as "the creative") manipulates these patterns to create whatever it is they wish to create. The specific structure of a work determines the experience of it, and the intention and ultimate goal is to provide the audience of a work with a particular kind of experience. 
 
