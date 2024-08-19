@@ -31,8 +31,15 @@
       onLoad: () => {
         r.resizeDrawingSurfaceToCanvas();
       },
+      onStateChange: () => {
+        toggleMenu();
+      }
     });
   });
+
+  function toggleMenu(){
+    console.log("toggle menu");
+  }
 
   function handlecategoryselected(event) {
     const selectedTag = event.detail;
@@ -60,7 +67,6 @@
 </script>
 
 <div class="container">
-  <canvas bind:this={riv_menu_btn} width="100" height="50" margin-left="auto"></canvas>
 
   <h2 class="site-header">Teodosin</h2>
 
@@ -100,6 +106,7 @@
   }
 
   .site-header {
+    user-select: none;
     margin-top: 5rem;
     margin-bottom: 2rem;
     text-align: center;

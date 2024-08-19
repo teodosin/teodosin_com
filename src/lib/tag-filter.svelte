@@ -30,6 +30,11 @@
 </script>
 
 <div class="categories-body">
+  <button class="category_button">Portfolio</button>
+  <button class="category_button">About</button>
+  <button class="category_button">Contact</button>
+
+
   <button
     class:active={activecategory === null}
     class="category_button"
@@ -41,7 +46,7 @@
   {#each categories as category (category)}
     <button
       class:active={category === activecategory}
-      class="category_button"
+      class="category_button tag"
       on:click={() => selectcategory(category)}
     >
       {capitalizeFirstLetter
@@ -53,33 +58,40 @@
 
 <style>
   .category_button {
-    background-color: #6f778069;
+    background-color: #ffffff00;
     border: none;
-    color: rgb(14, 14, 14);
+    color: #ffbc2d5e;
     padding: 0.5rem 1rem;
-    text-align: center;
+    text-align: left;
     text-decoration: none;
     display: inline-block;
-    font-size: 1rem;
+    font-family: Calistoga, serif;
+    font-size: 1.4rem;
     font-weight: 100;
     margin: 0.25rem 0.25rem;
     cursor: pointer;
     border-radius: 1rem;
   }
   .category_button:not(.active):hover {
-    background-color: #8596a869;
     box-shadow: 0px 4px 58px 2px rgba(156, 15, 102, 0.425);
     transition: box-shadow 0.3s ease;
   }
   .active {
     font-weight: 800;
-    background-color: #b97f00;
-    color: rgb(255, 255, 255);
   }
 
   .categories-body {
     display: flex;
+    width: 16rem;
+    flex-direction: column;
     justify-content: center;
     margin-bottom: 1rem;
+  }
+  .category_button.tag {
+    font-size: 1.4rem;
+    font-family: Corben, serif;
+    padding-left: 2rem;
+    padding-top: -3.5rem;
+    padding-bottom: -0.5rem;
   }
 </style>
