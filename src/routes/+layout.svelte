@@ -16,9 +16,9 @@
 
 <!-- <div bind:this={sketchContainer} class="sketch-container"></div> -->
 
-<nav class="nav">
+<!-- <nav class="nav">
 	<a class="nav-button" href="{base}/">Home</a>
-</nav>
+</nav> -->
 
 <slot />
 

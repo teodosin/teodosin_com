@@ -4,6 +4,7 @@
   import { onMount } from "svelte";
   import { fetchMarkdownPosts } from "$lib/utils";
   import TagFilter from "$lib/tag-filter.svelte";
+  import * as rive from "@rive-app/canvas";
 
   /**
    * @type {any[]}
@@ -12,6 +13,8 @@
   let filteredPosts = [];
   let categories = [];
 
+  let riv_menu_btn;
+
   onMount(async () => {
     // posts = await fetchMarkdownPosts();
     posts = await fetchMarkdownPosts("about", "digital-fabrication");
@@ -19,6 +22,16 @@
     categories = Array.from(
       new Set(posts.flatMap((post) => post.meta.categories)),
     );
+
+    const r = new rive.Rive({
+      src: "/menu_back_btn.riv",
+      canvas: riv_menu_btn,
+      autoplay: true,
+      stateMachines: "toggle",
+      onLoad: () => {
+        r.resizeDrawingSurfaceToCanvas();
+      },
+    });
   });
 
   function handlecategoryselected(event) {
@@ -44,10 +57,11 @@
     "#8B4513",
   ];
   let bcolor = colors[Math.floor(Math.random() * colors.length)];
-
 </script>
 
 <div class="container">
+  <canvas bind:this={riv_menu_btn} width="100" height="50" margin-left="auto"></canvas>
+
   <h2 class="site-header">Teodosin</h2>
 
   <TagFilter {categories} on:categoryselected={handlecategoryselected} />
