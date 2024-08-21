@@ -5,28 +5,13 @@
 	import * as rive from "@rive-app/canvas";
 
 	import { onMount } from "svelte";
-	// Uncomment all this stuff to enable silly p5 sketch in background
-	// import { runSketch } from "../lib/sketch";
+	import { goto } from '$app/navigation';
 
-	// let sketchContainer: HTMLElement;
+	import { page } from "$app/stores";
 
-	let riv_menu_btn: HTMLCanvasElement;
 	let riv_logo: HTMLCanvasElement;
 
-	onMount(() => {
-		const rbtn = new rive.Rive({
-			src: "/menu_back_btn.riv",
-			canvas: riv_menu_btn,
-			autoplay: true,
-			stateMachines: "toggle",
-			onLoad: () => {
-				rbtn.resizeDrawingSurfaceToCanvas();
-			},
-			onStateChange: () => {
-				toggleMenu();
-			},
-		});
-
+	onMount(async () => {
 		const rlogo = new rive.Rive({
 			src: "/teodosin_logo.riv",
 			canvas: riv_logo,
@@ -35,49 +20,78 @@
 			onLoad: () => {
 				rlogo.resizeDrawingSurfaceToCanvas();
 			},
-			onStateChange: () => {
-				toggleMenu();
-			},
 		});
 	});
-
-	function toggleMenu() {
-		console.log("toggle menu");
-	}
 </script>
 
 <nav class="nav">
-	<canvas class="menu_btn" bind:this={riv_menu_btn} width="100" height="50"></canvas>
-	<canvas class="logo" bind:this={riv_logo} width="100" height="100"></canvas>
-	<div class="right-side"></div>
+
+
+	<div class="nav-cont">
+
+		<div class="side">
+			<button class="nav-btn" class:active={$page.url.pathname === "/portfolio"}>
+				Portfolio
+			</button>
+			<button class="nav-btn" class:active={$page.url.pathname === "/blog"}>
+				Karta
+			</button>
+		</div>
+		
+
+		<canvas class="logo" bind:this={riv_logo} width="150" height="100"></canvas>
+		
+
+		<div class="side">
+			<button class="nav-btn" on:click={() => goto("/gallery")} class:current={$page.url.pathname === "/gallery"}>
+				Gallery
+			</button>
+			<button class="nav-btn" on:click={() => goto("/about")} class:active={$page.url.pathname === "/about"}>
+				About
+			</button>
+			<button class="nav-btn" class:active={$page.url.pathname === "/contact"}>
+				Contact
+			</button>
+		</div>
+
+	</div>
+
+
+	<div class="nav-div" />
+
+
 </nav>
+
 
 <slot />
 
 <style>
-	@import url("https://fonts.googleapis.com/css2?family=Calistoga&family=Cinzel+Decorative:wght@400;700;900&family=Corben:wght@400;700&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+	@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Corben:wght@400;700&family=DM+Serif+Text:ital@0;1&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 	:global(body) {
 		font-family: "Corben", serif;
 		margin: 0;
-		font-weight: 300;
-		font-size: 18px;
+		font-size: 1rem;
 		background-color: #121212;
-		color: #FFBD2D;
+		color: #ffbd2d;
 	}
 
 	:global(h1) {
-		font-family: "Calistoga", serif;
+		font-family: "DM Serif Text", serif;
 		font-size: 3rem;
 	}
 	:global(h2) {
-		font-family: "Calistoga", serif;
+		font-family: "DM Serif Text", serif;
 		font-size: 2rem;
 	}
 
 	:global(h3) {
-		font-family: "Calistoga", serif;
+		font-family: "DM Serif Text", serif;
 		font-size: 1.5rem;
+	}
+	:global(h4) {
+		font-family: "DM Serif Text", serif;
+		font-size: 1.2rem;
 	}
 
 	:global(a) {
@@ -100,23 +114,58 @@
 		padding: 0.1rem;
 		box-shadow: #ffffff;
 	}
+	.nav-div {
+		height: 1px;
+		background: linear-gradient(to right, transparent, #ffbd2d, transparent);
+	}
 	.nav {
-		position: absolute;
+		position: sticky;
 		user-select: none;
-		width: 100vw;
+		width: 100%;
+		margin-bottom: 0.5rem;
+		z-index: 60000;
+		background-color: #00000050;
+		backdrop-filter: blur(10px);
+	}
+	.nav-cont {
+		width: 100%;
 		display: grid;
 		grid-column: 3;
 		grid-template-columns: 1fr auto 1fr;
 		grid-auto-flow: column;
 		z-index: 1;
 	}
-	.menu_btn {
-		margin-left: 1rem;
-		padding: 0.7rem;
-		cursor: pointer;
+	.side {
+		padding: 0.5rem;
+		padding-left: 2rem;
+		padding-right: 2rem;
+		display: flex;
+		flex-grow: 1;
+		flex-direction: row;
+		justify-content: space-around;
+		align-items: center;
 	}
-	.right-side {
-		padding: 0.1rem;
+	.nav-btn {
+		font-family: "DM Serif Text", serif;
+		color: #ffbd2d;
+		font-size: 1.2rem;
+		user-select: contain;
+		font-style: italic;
+		height: 100%;
+		background-color: transparent;
+		border: none;
+		opacity: 0.5;
+		cursor: pointer;
+		flex-grow: 0;
+	}
+	.nav-btn:hover {
+		opacity: 1;
+		text-shadow: #eeeeff 0px 0px 10px;
+		transition: text-shadow 0.3s ease;
+	}
+	.nav-btn:current {
+		font-style: normal;
+		text-shadow: #eeeeff 0px 0px 16px;
 	}
 
 	/* width */

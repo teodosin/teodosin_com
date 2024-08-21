@@ -80,18 +80,30 @@
     font-weight: 800;
   }
 
-  .categories-body {
-    display: flex;
-    width: 16rem;
-    flex-direction: column;
-    justify-content: center;
-    margin-bottom: 1rem;
-  }
   .category_button.tag {
     font-size: 1.4rem;
     font-family: Corben, serif;
     padding-left: 2rem;
     padding-top: -3.5rem;
     padding-bottom: -0.5rem;
+  }
+  .categories-body {
+    background-color: #00000080;
+    backdrop-filter: blur(10px);
+    position: absolute;
+    overflow: hidden;
+    z-index: 1000;
+    height: 100%;
+    display: flex;
+    width: 16rem;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+  @media (min-width: 768px) {
+    .categories-body {
+      width: 16rem;
+      background-color: #00000000;
+      backdrop-filter: blur(0px);
+    }
   }
 </style>
