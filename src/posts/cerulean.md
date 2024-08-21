@@ -2,9 +2,9 @@
 title: "Cerulean"
 date: "2024-07-22"
 description: "Album cover set for Halysis' debut album"
-categories: ["about"]
+categories: ["client-work"]
 tags: ["no-banner"]
-cover: "signature_cover.png"
+cover: "halysis_cerulean/HalysisCeruleanAct3Web_Cover.jpg"
 ---
 
 Nothing here yet. 

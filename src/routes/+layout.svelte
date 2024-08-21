@@ -5,7 +5,7 @@
 	import * as rive from "@rive-app/canvas";
 
 	import { onMount } from "svelte";
-	import { goto } from '$app/navigation';
+	import { goto } from "$app/navigation";
 
 	import { page } from "$app/stores";
 
@@ -22,46 +22,66 @@
 			},
 		});
 	});
+
+	let cursorX = 0;
+
+	function handleMouseMove(event: { clientX: number }) {
+		cursorX = event.clientX / window.innerWidth;
+		console.log(cursorX);
+	}
 </script>
 
+<svelte:body on:mousemove={handleMouseMove}/>
+
 <nav class="nav">
-
-
 	<div class="nav-cont">
-
 		<div class="side">
-			<button class="nav-btn" class:active={$page.url.pathname === "/portfolio"}>
+			<button
+				class="nav-btn"
+				on:click={() => goto("/")}
+				class:active={$page.url.pathname === "/portfolio"}
+			>
 				Portfolio
 			</button>
-			<button class="nav-btn" class:active={$page.url.pathname === "/blog"}>
+			<button
+				class="nav-btn"
+				on:click={() => goto("/karta")}
+				class:active={$page.url.pathname === "/karta"}
+			>
 				Karta
 			</button>
 		</div>
-		
 
-		<canvas class="logo" bind:this={riv_logo} width="150" height="100"></canvas>
-		
+		<canvas class="logo" bind:this={riv_logo} width="100" height="100"
+		></canvas>
 
 		<div class="side">
-			<button class="nav-btn" on:click={() => goto("/gallery")} class:current={$page.url.pathname === "/gallery"}>
+			<button
+				class="nav-btn"
+				on:click={() => goto("/gallery")}
+				class:current={$page.url.pathname === "/gallery"}
+			>
 				Gallery
 			</button>
-			<button class="nav-btn" on:click={() => goto("/about")} class:active={$page.url.pathname === "/about"}>
+			<button
+				class="nav-btn"
+				on:click={() => goto("/about")}
+				class:active={$page.url.pathname === "/about"}
+			>
 				About
 			</button>
-			<button class="nav-btn" class:active={$page.url.pathname === "/contact"}>
+			<button
+				class="nav-btn"
+				on:click={() => goto("/contact")}
+				class:active={$page.url.pathname === "/contact"}
+			>
 				Contact
 			</button>
 		</div>
-
 	</div>
 
-
-	<div class="nav-div" />
-
-
+	<div class="nav-div" style="--cursor-x: {cursorX}" />
 </nav>
-
 
 <slot />
 
@@ -70,6 +90,7 @@
 
 	:global(body) {
 		font-family: "Corben", serif;
+		min-height: 100vh;
 		margin: 0;
 		font-size: 1rem;
 		background-color: #121212;
@@ -116,15 +137,22 @@
 	}
 	.nav-div {
 		height: 1px;
-		background: linear-gradient(to right, transparent, #ffbd2d, transparent);
+		background: linear-gradient(
+			to right,
+			transparent,
+			#ffbd2d80 calc(var(--cursor-x) * 100% - 10%),
+			#ffbd2d calc(var(--cursor-x) * 100%),
+			#ffbc2d80 calc(var(--cursor-x) * 100% + 10%),
+			transparent
+		);
 	}
 	.nav {
 		position: sticky;
+		top: 0;
 		user-select: none;
 		width: 100%;
 		margin-bottom: 0.5rem;
 		z-index: 60000;
-		background-color: #00000050;
 		backdrop-filter: blur(10px);
 	}
 	.nav-cont {

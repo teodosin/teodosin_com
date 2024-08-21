@@ -1,109 +1,118 @@
 <script>
-  import { createEventDispatcher } from "svelte";
-  const dispatch = createEventDispatcher();
+  import { base } from "$app/paths";
 
-  /**
-   * @type {any[]}
-   */
-  export let categories = [];
-  /**
-   * @type {null}
-   */
-  let activecategory = null;
-  /**
-   * @type {boolean}
-   */
-  export let capitalizeFirstLetter = true;
-  /**
-   * @param {any} category
-   */
+  import { createEventDispatcher } from 'svelte';
 
-  function selectcategory(category) {
-    if (activecategory === category) {
-      activecategory = null;
-      dispatch("categoryselected", null);
-    } else {
-      activecategory = category;
-      dispatch("categoryselected", category);
-    }
-  }
+	const dispatch = createEventDispatcher();
+
+  export let post;
+  /**
+   * @type {any}
+   */
+  export let selectedPost;
+  export let bcolor;
 </script>
 
-<div class="categories-body">
-  <button class="category_button">Portfolio</button>
-  <button class="category_button">About</button>
-  <button class="category_button">Contact</button>
-
-
-  <button
-    class:active={activecategory === null}
-    class="category_button"
-    on:click={() => selectcategory(null)}
+<a href={`${base}/${post.path}`}>
+  <article
+    class="post"
+    on:mouseover={() => dispatch('select', post.path)}
+    on:mouseout={() => dispatch('select', null)}
+    on:focus={() => dispatch('select', post.path)}
+    on:blur={() => dispatch('select', null)}
+    class:unselected={selectedPost && selectedPost !== post.path}
+    style="background-image: url({post.meta.cover
+      ? post.meta.cover
+      : '/default-cover.jpg'});
+      "
   >
-    {capitalizeFirstLetter ? "All" : "all"}
-  </button>
-
-  {#each categories as category (category)}
-    <button
-      class:active={category === activecategory}
-      class="category_button tag"
-      on:click={() => selectcategory(category)}
-    >
-      {capitalizeFirstLetter
-        ? category.charAt(0).toUpperCase() + category.slice(1)
-        : category}
-    </button>
-  {/each}
-</div>
+  <div class="text-cont">
+    <h3 class="post-title">{post.meta.title}</h3>
+    <p class="post-desc">{post.meta.description}</p>
+  </div>
+</article>
+</a>
 
 <style>
-  .category_button {
-    background-color: #ffffff00;
+  .post {
+    display: grid;
+    aspect-ratio: 1/1;
+    margin-bottom: 0rem;
     border: none;
-    color: #ffbc2d5e;
-    padding: 0.5rem 1rem;
-    text-align: left;
-    text-decoration: none;
-    display: inline-block;
-    font-family: Calistoga, serif;
-    font-size: 1.4rem;
-    font-weight: 100;
-    margin: 0.25rem 0.25rem;
-    cursor: pointer;
-    border-radius: 1rem;
+    overflow: hidden;
+    align-content: end;
+
+    position: relative;
+
+    background-size: cover;
+    background-position: center;
+
+    /* Add transition for opacity */
+    transition: opacity 0.3s ease;
   }
-  .category_button:not(.active):hover {
-    box-shadow: 0px 4px 58px 2px rgba(156, 15, 102, 0.425);
+  .post:hover {
+    box-shadow: 0px 0px 88px 2px rgb(0, 0, 0);
     transition: box-shadow 0.3s ease;
-  }
-  .active {
-    font-weight: 800;
+    transform: scale(
+      1.005
+    ); /* On hover, enlarge the background image slightly */
   }
 
-  .category_button.tag {
-    font-size: 1.4rem;
-    font-family: Corben, serif;
-    padding-left: 2rem;
-    padding-top: -3.5rem;
-    padding-bottom: -0.5rem;
-  }
-  .categories-body {
-    background-color: #00000080;
-    backdrop-filter: blur(10px);
+  .text-cont {
     position: absolute;
-    overflow: hidden;
-    z-index: 1000;
-    height: 100%;
+    bottom: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
     display: flex;
-    width: 16rem;
     flex-direction: column;
-    margin-bottom: 1rem;
+    align-content: end;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: #a7a7a7;
+    transition: background 0.3s ease; /* Add transition for smooth effect */
   }
-  @media (min-width: 768px) {
-    .categories-body {
-      width: 16rem;
-      background-color: #00000000;
-      backdrop-filter: blur(0px);
+  .post:hover .text-cont {
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.521));
+    color: #f5f5f5;
+  }
+  .post.unselected {
+    opacity: 0.2;
+  }
+
+  .post-title {
+    position: relative;
+    color: #f2f2f2aa;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: -1rem;
+  }
+  .post:hover .post-title {
+    color: #f5f5f5;
+  }
+  .post-desc {
+    word-wrap: break-word;
+    max-height: 0; /* Initially set the maximum height to 0 */
+    overflow: hidden; /* Hide the overflow */
+    margin-top: 1.5rem;
+    transform: scaleY(0); /* Initially scale the description's height to 0 */
+    transform-origin: top; /* Set the origin of the transform to the top of the element */
+    transition:
+      max-height 0.2s ease,
+      transform 0.2s ease; /* Add transition for max-height and transform */
+  }
+  .post:hover .text-cont {
+    max-height: 100px; /* On hover, increase the maximum height */
+    transform: scaleY(
+      1
+    ); /* On hover, scale the description's height back to its original size */
+  }
+
+  @media (max-width: 600px) {
+        .post-title {
+            font-size: 1.2rem;
+        }
+
+        .post-desc {
+            font-size: 0.8rem;
+        }
     }
-  }
 </style>

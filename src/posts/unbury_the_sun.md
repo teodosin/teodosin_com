@@ -2,9 +2,9 @@
 title: "Unbury the Sun"
 date: "2024-07-22"
 description: "Introducing myself"
-categories: ["about"]
-tags: ["no-banner"]
-cover: "signature_cover.png"
+categories: ["client-work"]
+tags: ["no-banner", "professional"]
+cover: "halysis_unbury/halysis-unburyTheSun-full.png"
 sizes: ["2x2"]
 ---
 
