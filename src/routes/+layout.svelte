@@ -52,8 +52,7 @@
 			</button>
 		</div>
 
-		<canvas class="logo" bind:this={riv_logo} width="100" height="100"
-		></canvas>
+		<canvas class="logo" bind:this={riv_logo} width=100 height=100></canvas>
 
 		<div class="side">
 			<button
@@ -132,9 +131,12 @@
 	}
 
 	.logo {
+		width: 5rem;
+		height: 5rem;
 		padding: 0.1rem;
 		box-shadow: #ffffff;
 	}
+
 	.nav-div {
 		height: 1px;
 		background: linear-gradient(
@@ -214,5 +216,31 @@
 	/* Handle on hover */
 	:root::-webkit-scrollbar-thumb:hover {
 		background: #383838;
+	}
+
+	@media (max-width: 768px) {
+		:global(h1) {
+			font-size: 2rem;
+		}
+		:global(h2) {
+			font-size: 1.5rem;
+		}
+		:global(h3) {
+			font-size: 1.2rem;
+		}
+		:global(h4) {
+			font-size: 1rem;
+		}
+		.logo {
+			width: 3rem;
+			height: 3rem;
+		}
+		.nav-btn {
+			font-size: 0.8rem;
+		}
+		.side {
+			padding-left: 0rem;
+			padding-right: 0rem;
+		}
 	}
 </style>

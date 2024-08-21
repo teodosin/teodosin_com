@@ -177,7 +177,7 @@
         width: 100%;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
         .toc {
             display: inline;
             top: auto;

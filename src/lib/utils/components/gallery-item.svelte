@@ -104,7 +104,7 @@
     margin-top: -1.5rem;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 768px) {
     .post-title {
       font-size: 1.2rem;
     }

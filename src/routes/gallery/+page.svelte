@@ -81,12 +81,12 @@
         margin-bottom: 20rem;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
         .container {
             padding: 4px;
         }
     }
-    @media (min-width: 900px) {
+    @media (min-width: 768px) {
         .container {
             max-width: 80rem;
         }
