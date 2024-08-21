@@ -9,7 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // Define the directory containing the markdown files
-const markdownDir = path.resolve(__dirname, '../../posts');
+const markdownDir = path.resolve(__dirname, '../../../posts');
 
 // Read the directory
 const files = fs.readdirSync(markdownDir);

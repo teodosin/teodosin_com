@@ -81,8 +81,6 @@
         margin-bottom: 20rem;
     }
 
-
-
     @media (max-width: 600px) {
         .container {
             padding: 4px;

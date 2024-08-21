@@ -19,9 +19,11 @@ const __dirname = dirname(__filename);
 
 /** @type {import('@sveltejs/kit').Config} */
 
-const basePath = process.env.NODE_ENV === 'production' ? '/digital-fabrication' : '';
+const basePath = process.env.NODE_ENV === 'production' ? '/teodosin' : '';
 
-let entries = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'src/lib/utils/prerender-entries.json'), 'utf-8'));
+let entries = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'src/lib/utils/scripts/prerender-entries.json'), 'utf-8'));
+entries.push('/gallery');
+entries.push('/');
 
 const config = {
 	// Consult https://kit.svelte.dev/docs/integrations#preprocessors

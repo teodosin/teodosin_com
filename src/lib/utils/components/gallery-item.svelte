@@ -1,9 +1,9 @@
 <script>
   import { base } from "$app/paths";
 
-  import { createEventDispatcher } from 'svelte';
+  import { createEventDispatcher } from "svelte";
 
-	const dispatch = createEventDispatcher();
+  const dispatch = createEventDispatcher();
 
   export let post;
   /**
@@ -15,21 +15,22 @@
 <a class="post-wrapper" href={`${base}/${post.path}`}>
   <article
     class="post"
-    on:mouseover={() => dispatch('select', post.path)}
-    on:mouseout={() => dispatch('select', null)}
-    on:focus={() => dispatch('select', post.path)}
-    on:blur={() => dispatch('select', null)}
+    on:mouseover={() => dispatch("select", post.path)}
+    on:mouseout={() => dispatch("select", null)}
+    on:focus={() => dispatch("select", post.path)}
+    on:blur={() => dispatch("select", null)}
     class:unselected={selectedPost && selectedPost !== post.path}
     style="background-image: url({post.meta.cover
       ? post.meta.cover
       : '/default-cover.jpg'});
       "
   >
-  <div class="text-cont">
-    <h3 class="post-title">{post.meta.title}</h3>
-    <p class="post-desc">{post.meta.description}</p>
-  </div>
-</article>
+    <div class="text-cont">
+      <h3 class="post-title">{post.meta.title}</h3>
+      <p class="post-desc">{post.meta.description}</p>
+    </div>
+
+  </article>
 </a>
 
 <style>
@@ -40,12 +41,12 @@
     height: 100%;
   }
   .post {
+    position: relative;
     display: grid;
     aspect-ratio: 1/1;
-    margin-bottom: 0rem;
     border: none;
     align-content: end;
-
+    overflow: visible;
     position: relative;
 
     background-size: cover;
@@ -64,57 +65,52 @@
 
   .text-cont {
     position: absolute;
-    bottom: 0;
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+    top: 100%;
     width: 100%;
-    display: flex;
     flex-direction: column;
     align-content: end;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    color: #a7a7a7;
+    user-select: none;
+    color: #ffbd2d;
+    border-top: #ffbd2d;
+    border-style: inset;
+    border-width: 2px 0 0 0;
+    opacity: 0;
     transition: background 0.3s ease; /* Add transition for smooth effect */
-
+    transition: opacity 0.3s ease; /* Add transition for opacity */
+  }
+  .verty {
     transform: scaleY(0); /* Initially scale the description's height to 0 */
     transform-origin: top; /* Set the origin of the transform to the top of the element */
     transition:
       max-height 0.2s ease,
-      transform 0.2s ease; /* Add transition for max-height and transform */
+      transform 0.2s ease;
   }
   .post:hover .text-cont {
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.521));
-    color: #f5f5f5;
-    max-height: 100px; /* On hover, increase the maximum height */
-    transform: scaleY(1.1); /* On hover, scale the description's height */
-    
+    /* max-height: 100px;  */
+    /* transform: scaleY(1);  */
+    opacity: 1;
   }
   .post.unselected {
     opacity: 0.2;
   }
 
   .post-title {
+    margin-top: 0.2rem;
     position: relative;
-    color: #f2f2f2aa;
     font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: -1rem;
-  }
-  .post:hover .post-title {
-    color: #f5f5f5;
   }
   .post-desc {
     word-wrap: break-word;
-    overflow: hidden; /* Hide the overflow */
-    margin-top: 1.5rem;
+    margin-top: -1.5rem;
   }
 
   @media (max-width: 600px) {
-        .post-title {
-            font-size: 1.2rem;
-        }
-
-        .post-desc {
-            font-size: 0.8rem;
-        }
+    .post-title {
+      font-size: 1.2rem;
     }
+
+    .post-desc {
+      font-size: 0.8rem;
+    }
+  }
 </style>
