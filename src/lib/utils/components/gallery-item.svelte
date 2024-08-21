@@ -29,7 +29,6 @@
       <h3 class="post-title">{post.meta.title}</h3>
       <p class="post-desc">{post.meta.description}</p>
     </div>
-
   </article>
 </a>
 
@@ -78,22 +77,6 @@
     transition: background 0.3s ease; /* Add transition for smooth effect */
     transition: opacity 0.3s ease; /* Add transition for opacity */
   }
-  .verty {
-    transform: scaleY(0); /* Initially scale the description's height to 0 */
-    transform-origin: top; /* Set the origin of the transform to the top of the element */
-    transition:
-      max-height 0.2s ease,
-      transform 0.2s ease;
-  }
-  .post:hover .text-cont {
-    /* max-height: 100px;  */
-    /* transform: scaleY(1);  */
-    opacity: 1;
-  }
-  .post.unselected {
-    opacity: 0.2;
-  }
-
   .post-title {
     margin-top: 0.2rem;
     position: relative;
@@ -102,6 +85,24 @@
   .post-desc {
     word-wrap: break-word;
     margin-top: -1.5rem;
+  }
+  .verty {
+    transform: scaleY(0); /* Initially scale the description's height to 0 */
+    transform-origin: top; /* Set the origin of the transform to the top of the element */
+    transition:
+      max-height 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  @media (min-width: 768px) {
+    .post:hover .text-cont {
+      /* max-height: 100px;  */
+      /* transform: scaleY(1);  */
+      opacity: 1;
+    }
+    .post.unselected {
+      opacity: 0.2;
+    }
   }
 
   @media (max-width: 768px) {
