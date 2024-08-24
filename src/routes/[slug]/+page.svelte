@@ -1,6 +1,7 @@
 <!-- src/routes/[slug]/+page.svelte -->
 <script lang="ts">
-    import type { PageData } from "./$types";
+    import Scanline from "$lib/utils/components/scanline.svelte";
+import type { PageData } from "./$types";
     import { afterUpdate, onMount, tick } from "svelte";
 
     export let data: PageData;
@@ -61,6 +62,7 @@
     });
 
     const hasNoBannerTag = data.tags && data.tags.includes("no-banner");
+    const banner = data.banner ? data.banner : data.cover;
 
     let scroll = 0;
 
@@ -73,12 +75,13 @@
     <!-- svelte-ignore a11y-missing-attribute -->
     <img
         class="cover-banner"
-        src={data.cover}
+        src={banner}
         style:transform={`translate3d(0, ${scroll / 2}px, 0)`}
     />
 {/if}
 <div class="post-header {hasNoBannerTag ? 'no-banner' : ''}">
     <h1>{data.title}</h1>
+    <Scanline />
 </div>
 
 <div class="centered-container">
@@ -96,30 +99,28 @@
         align-items: center;
         justify-content: end;
         max-width: 50rem;
-        border-bottom: 1px solid #333;
-        height: 25rem;
         margin-left: auto;
         margin-right: auto;
-        margin-bottom: 2rem;
+        text-shadow: #ffffff50 0 0 20px;
     }
     .post-header.no-banner {
         height: 15rem;
     }
     .cover-banner {
-        position: absolute;
         width: 100%;
-        height: 25rem;
+        max-height: 100vh;
         object-fit: cover;
-        z-index: -1;
+        z-index: 1;
         top: 0;
+        margin-bottom: -5rem;
         mask-image: linear-gradient(
             to bottom,
-            rgba(0, 0, 0, 1) 0%,
+            rgba(0, 0, 0, 1) 75%,
             rgba(0, 0, 0, 0) 100%
         ); /* Standard property */
         -webkit-mask-image: linear-gradient(
             to bottom,
-            rgba(0, 0, 0, 1) 0%,
+            rgba(0, 0, 0, 1) 75%,
             rgba(0, 0, 0, 0) 100%
         );
     }
@@ -155,20 +156,25 @@
         border-left: 1px solid #333;
     }
 
-    .centered-container {
+    .centered-container { 
+        position: relative;
+        z-index: 100;
         display: flex;
         flex-direction: row;
         justify-content: center;
         margin-left: auto;
         margin-right: auto;
+        width: 100%;
         max-width: 60rem;
         padding-left: 2rem;
         padding-right: 2rem;
+        background: linear-gradient(to right, #12121200, #12121290 15%, #12121290 85%, #12121200);
     }
 
     .post {
         display: flex;
         flex-direction: column;
+        width:  100%;
         max-width: 50rem;
         padding-bottom: 20rem;
     }
@@ -222,6 +228,9 @@
 
     :global(ul) {
         margin-block-start: 0px;
+        max-width: 40rem;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .post :global(h1) {
@@ -236,6 +245,13 @@
     }
     .post :global(h4) {
         font-size: 1.4rem;
+    }
+
+    .post :global(p) {
+        max-width: 40rem;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .post :global(video) {

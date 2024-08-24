@@ -9,10 +9,16 @@
 
 	import { page } from "$app/stores";
 
+	import Scanline from "$lib/utils/components/scanline.svelte";
+
 	let riv_logo: HTMLCanvasElement;
 
+	
+	let currentPage;
+	$: currentPage = $page.url.pathname;
+		
 	onMount(async () => {
-		console.log($page.url.pathname === "/gallery");
+		console.log(currentPage === "/gallery");
 		const rlogo = new rive.Rive({
 			src: "/teodosin_logo.riv",
 			canvas: riv_logo,
@@ -24,27 +30,21 @@
 		});
 	});
 
-	let cursorX = 0;
-
-	function handleMouseMove(event: { clientX: number }) {
-		cursorX = event.clientX / window.innerWidth;
-	}
 </script>
 
-<svelte:body on:mousemove={handleMouseMove} />
 
 <nav class="nav">
 	<div class="nav-cont">
 		<div class="side">
 			<button
-				class:active={$page.url.pathname === "/portfolio"}
+				class:active={currentPage === "/portfolio"}
 				class="nav-btn"
 				on:click={() => goto("/")}
 			>
 				Portfolio
 			</button>
 			<button
-				class:active={$page.url.pathname === "/karta"}
+				class:active={currentPage === "/karta"}
 				class="nav-btn"
 				on:click={() => goto("/karta")}
 			>
@@ -57,21 +57,21 @@
 
 		<div class="side">
 			<button
-				class:active={$page.url.pathname === "/gallery"}
+				class:active={currentPage === "/gallery"}
 				class="nav-btn"
 				on:click={() => goto("/gallery")}
 			>
 				Gallery
 			</button>
 			<button
-				class:active={$page.url.pathname === "/about"}
+				class:active={currentPage === "/about"}
 				class="nav-btn"
 				on:click={() => goto("/about")}
 			>
 				About
 			</button>
 			<button
-				class:active={$page.url.pathname === "/contact"}
+				class:active={currentPage === "/contact"}
 				class="nav-btn"
 				on:click={() => goto("/contact")}
 			>
@@ -80,7 +80,7 @@
 		</div>
 	</div>
 
-	<div class="nav-div" style="--cursor-x: {cursorX}" />
+	<Scanline />
 </nav>
 
 <slot />
@@ -94,25 +94,29 @@
 		margin: 0;
 		font-size: 1rem;
 		background-color: #121212;
-		color: #ffbd2d;
+		color: #eeeeee;
 	}
 
 	:global(h1) {
 		font-family: "DM Serif Text", serif;
 		font-size: 3rem;
+		color: #ffbd2d;
 	}
 	:global(h2) {
 		font-family: "DM Serif Text", serif;
 		font-size: 2rem;
+		color: #ffbd2d;
 	}
 
 	:global(h3) {
 		font-family: "DM Serif Text", serif;
 		font-size: 1.5rem;
+		color: #ffbd2d;
 	}
 	:global(h4) {
 		font-family: "DM Serif Text", serif;
 		font-size: 1.2rem;
+		color: #ffbd2d;
 	}
 
 	:global(a) {
@@ -138,23 +142,11 @@
 		box-shadow: #ffffff;
 	}
 
-	.nav-div {
-		height: 1px;
-		background: linear-gradient(
-			to right,
-			transparent,
-			#ffbd2d80 calc(var(--cursor-x) * 100% - 10%),
-			#ffbd2d calc(var(--cursor-x) * 100%),
-			#ffbc2d80 calc(var(--cursor-x) * 100% + 10%),
-			transparent
-		);
-	}
 	.nav {
 		position: sticky;
 		top: 0;
 		user-select: none;
 		width: 100%;
-		margin-bottom: 0.5rem;
 		z-index: 60000;
 		backdrop-filter: blur(10px);
 	}
@@ -196,7 +188,6 @@
 	}
 	.nav-btn:active {
 		font-style: normal;
-		font-size: 2rem;
 		text-shadow: #eeeeff 0px 0px 16px;
 	}
 

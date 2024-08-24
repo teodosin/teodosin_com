@@ -1,14 +1,56 @@
 ---
-title: "Cerulean"
-date: "2024-07-22"
+title: "Halysis - Cerulean"
+date: "2020-12-08"
 description: "Album cover set for Halysis' debut album"
 categories: ["professional", "album cover"]
-tags: ["no-banner"]
-cover: "halysis_cerulean/HalysisCeruleanAct3Web_Cover.jpg"
+tags: []
+cover: "halysis_cerulean/ceruleancov3.jpg"
 ---
 
-Nothing here yet. 
+I was asked to create a set of album covers for [Halysis](https://www.instagram.com/halysisofficial/), a Finnish melodic death metal band. The covers were for their debut album, Cerulean, and depicted the three major arcs of its story. 
 
-Oooh, mysterious. 
+s
+s
+s
+s
+ss
+s
+s
+
+s
+s
+s
+s
+s
+s
+s
+ss
+
+s
+s
+
+s
+s
+
+
+s
+s
+s
+
+s
+
+
+
+s
+s
+s
+s
+
+
+
+s
+s
+s
+s
 
 

@@ -4,12 +4,13 @@ date: "2022-08-05"
 description: "Surreal Animation Loop"
 categories: ["animation", "personal"]
 tags: ["animation"]
-cover: "ever_playful/playful_1080.gif"
+cover: "ever_playful/playful_512.gif"
+banner: "ever_playful/playful_1080.gif"
 ---
 
-_Ever Playful_ is a surreal loop made to practice animation and the mixed use of multiple software. 
+_Ever Playful_ is a surreal animation loop made as a personal project. 
 
-The idea was clear in my mind since the beginning, so I opted to skip the sketching phase and went straight to the asset creation and animation. It involved several steps:
+The idea was clear in my mind since the beginning, so I opted to skip the sketching phase and went straight to the asset creation and animation. It involved combining several steps over several different software:
 
 * Modeling of the character in *Blender*.
 * Modeling of the mandala in *Blender* with geometry nodes.

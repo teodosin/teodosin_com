@@ -10,7 +10,7 @@ export async function load({ params }) {
         }
         const post = await posts[`/src/posts/${params.slug}.md`]();
         // @ts-ignore
-        const { title, date, categories, tags, cover } = post.metadata;
+        const { title, date, categories, tags, cover, banner } = post.metadata;
         // @ts-ignore
         const content = post.default;
         
@@ -21,6 +21,7 @@ export async function load({ params }) {
             categories,
             tags,
             cover,
+            banner,
         };
     } catch (error) {
         console.error(`Error loading post ${params.slug}:`, error);

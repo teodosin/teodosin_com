@@ -2,6 +2,7 @@
   import { base } from "$app/paths";
 
   import { createEventDispatcher } from "svelte";
+    import Scanline from "./scanline.svelte";
 
   const dispatch = createEventDispatcher();
 
@@ -26,6 +27,7 @@
       "
   >
     <div class="text-cont">
+      <Scanline />
       <h3 class="post-title">{post.meta.title}</h3>
       <p class="post-desc">{post.meta.description}</p>
     </div>
@@ -64,27 +66,27 @@
 
   .text-cont {
     position: absolute;
+    z-index: 2000;
     top: 100%;
     width: 100%;
     flex-direction: column;
     align-content: end;
     user-select: none;
-    color: #ffbd2d;
-    border-top: #ffbd2d;
-    border-style: inset;
-    border-width: 2px 0 0 0;
+    text-align: center;
     opacity: 0;
     transition: background 0.3s ease; /* Add transition for smooth effect */
     transition: opacity 0.3s ease; /* Add transition for opacity */
   }
   .post-title {
-    margin-top: 0.2rem;
+    margin-top: 0.4rem;
     position: relative;
     font-size: 1.5rem;
   }
   .post-desc {
     word-wrap: break-word;
     margin-top: -1.5rem;
+    transition: background 0.6s ease;
+    transition: opacity 0.6s ease;
   }
   .verty {
     transform: scaleY(0); /* Initially scale the description's height to 0 */
@@ -98,6 +100,9 @@
     .post:hover .text-cont {
       /* max-height: 100px;  */
       /* transform: scaleY(1);  */
+      opacity: 1;
+    }
+    .post:hover .post-desc {
       opacity: 1;
     }
     .post.unselected {
