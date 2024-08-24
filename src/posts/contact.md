@@ -1,14 +1,23 @@
 ---
 title: "Contact"
 date: "2024-07-22"
-description: "Introducing myself"
+description: "Get in touch"
 categories: ["about"]
 tags: ["no-banner"]
 cover: "signature_cover.png"
 ---
 
-Nothing here yet. 
+Hey!
 
-Oooh, mysterious. 
+Questions about my work?
+
+Want to inquire about hiring me for a project?
+
+Just want to say hi? 
+
+Feel free to reach out to me.
+
+[hello@teodosin.com](mailto:hello@teodosin.com)
+
 
 

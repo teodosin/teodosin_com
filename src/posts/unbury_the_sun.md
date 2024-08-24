@@ -2,7 +2,7 @@
 title: "Unbury the Sun"
 date: "2024-07-22"
 description: "Introducing myself"
-categories: ["client-work"]
+categories: ["professional", "album cover"]
 tags: ["no-banner", "professional"]
 cover: "halysis_unbury/halysis-unburyTheSun-full.png"
 sizes: ["2x2"]

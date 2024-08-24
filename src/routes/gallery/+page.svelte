@@ -14,7 +14,9 @@
     let categories = [];
 
     onMount(async () => {
-        posts = await fetchMarkdownPosts();
+        posts = await fetchMarkdownPosts({
+           categoryBlocklist: ["about"]
+        });
         filteredPosts = posts;
         categories = Array.from(
             new Set(posts.flatMap((post) => post.meta.tags)),
@@ -59,7 +61,7 @@
     <div class="horz-cont">
         <div class="grid-container">
             {#each filteredPosts as post}
-                <GalleryItem on:select={handleSelect} post={post} selectedPost={selectedPost} {bcolor} />
+                <GalleryItem on:select={handleSelect} post={post} selectedPost={selectedPost} />
             {/each}
         </div>
     </div>

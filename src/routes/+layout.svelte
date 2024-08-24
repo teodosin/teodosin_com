@@ -12,6 +12,7 @@
 	let riv_logo: HTMLCanvasElement;
 
 	onMount(async () => {
+		console.log($page.url.pathname === "/gallery");
 		const rlogo = new rive.Rive({
 			src: "/teodosin_logo.riv",
 			canvas: riv_logo,
@@ -27,52 +28,52 @@
 
 	function handleMouseMove(event: { clientX: number }) {
 		cursorX = event.clientX / window.innerWidth;
-		console.log(cursorX);
 	}
 </script>
 
-<svelte:body on:mousemove={handleMouseMove}/>
+<svelte:body on:mousemove={handleMouseMove} />
 
 <nav class="nav">
 	<div class="nav-cont">
 		<div class="side">
 			<button
+				class:active={$page.url.pathname === "/portfolio"}
 				class="nav-btn"
 				on:click={() => goto("/")}
-				class:active={$page.url.pathname === "/portfolio"}
 			>
 				Portfolio
 			</button>
 			<button
+				class:active={$page.url.pathname === "/karta"}
 				class="nav-btn"
 				on:click={() => goto("/karta")}
-				class:active={$page.url.pathname === "/karta"}
 			>
 				Karta
 			</button>
 		</div>
 
-		<canvas class="logo" bind:this={riv_logo} width=100 height=100></canvas>
+		<canvas class="logo" bind:this={riv_logo} width="100" height="100"
+		></canvas>
 
 		<div class="side">
 			<button
+				class:active={$page.url.pathname === "/gallery"}
 				class="nav-btn"
 				on:click={() => goto("/gallery")}
-				class:current={$page.url.pathname === "/gallery"}
 			>
 				Gallery
 			</button>
 			<button
+				class:active={$page.url.pathname === "/about"}
 				class="nav-btn"
 				on:click={() => goto("/about")}
-				class:active={$page.url.pathname === "/about"}
 			>
 				About
 			</button>
 			<button
+				class:active={$page.url.pathname === "/contact"}
 				class="nav-btn"
 				on:click={() => goto("/contact")}
-				class:active={$page.url.pathname === "/contact"}
 			>
 				Contact
 			</button>
@@ -193,8 +194,9 @@
 		text-shadow: #eeeeff 0px 0px 10px;
 		transition: text-shadow 0.3s ease;
 	}
-	.nav-btn:current {
+	.nav-btn:active {
 		font-style: normal;
+		font-size: 2rem;
 		text-shadow: #eeeeff 0px 0px 16px;
 	}
 
