@@ -88,6 +88,16 @@
 <style>
 	@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Corben:wght@400;700&family=DM+Serif+Text:ital@0;1&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
+	/* Color palette */
+	:global(:root){
+		--background-color: #121212;
+		--main-highlight: #ffbd2d;
+		--main-highlight-dim: #ffbd2d80;
+		--main-highlight-dim-2: #ffbd2d40;
+		--paragraph: #eeeeee;
+		--subtle-bg: #301230;
+	}
+
 	:global(body) {
 		font-family: "Corben", serif;
 		min-height: 100vh;
@@ -100,23 +110,23 @@
 	:global(h1) {
 		font-family: "DM Serif Text", serif;
 		font-size: 3rem;
-		color: #ffbd2d;
+		color: var(--main-highlight);
 	}
 	:global(h2) {
 		font-family: "DM Serif Text", serif;
 		font-size: 2rem;
-		color: #ffbd2d;
+		color: var(--main-highlight);
 	}
 
 	:global(h3) {
 		font-family: "DM Serif Text", serif;
 		font-size: 1.5rem;
-		color: #ffbd2d;
+		color: var(--main-highlight);
 	}
 	:global(h4) {
 		font-family: "DM Serif Text", serif;
 		font-size: 1.2rem;
-		color: #ffbd2d;
+		color: var(--main-highlight);
 	}
 
 	:global(a) {
@@ -170,7 +180,7 @@
 	}
 	.nav-btn {
 		font-family: "DM Serif Text", serif;
-		color: #ffbd2d;
+		color: var(--main-highlight);
 		font-size: 1.2rem;
 		user-select: contain;
 		font-style: italic;
@@ -198,12 +208,12 @@
 
 	/* Track */
 	:root::-webkit-scrollbar-track {
-		background: #000000;
+		background: var(--background-color);
 	}
 
 	/* Handle */
 	:root::-webkit-scrollbar-thumb {
-		background: #5f5f5f;
+		background: var(--main-highlight-dim);
 	}
 
 	/* Handle on hover */
@@ -212,6 +222,9 @@
 	}
 
 	@media (max-width: 768px) {
+		:global(body){
+			font-size: 0.8rem;
+		}
 		:global(h1) {
 			font-size: 2rem;
 		}

@@ -71,27 +71,33 @@ import type { PageData } from "./$types";
 
 <svelte:window bind:scrollY={scroll} />
 
-{#if !hasNoBannerTag}
+<div class="container">
+    {#if !hasNoBannerTag}
     <!-- svelte-ignore a11y-missing-attribute -->
     <img
-        class="cover-banner"
-        src={banner}
-        style:transform={`translate3d(0, ${scroll / 2}px, 0)`}
+    class="cover-banner"
+    src={banner}
+    style:transform={`translate3d(0, ${scroll / 2}px, 0)`}
     />
-{/if}
-<div class="post-header {hasNoBannerTag ? 'no-banner' : ''}">
-    <h1>{data.title}</h1>
-    <Scanline />
-</div>
+    {/if}
 
-<div class="centered-container">
-    <div class="toc"></div>
-    <article class="post">
-        <svelte:component this={data.content} />
-    </article>
+    <div class="post-header {hasNoBannerTag ? 'no-banner' : ''}">
+        <h1>{data.title}</h1>
+        <Scanline />
+    </div>
+    
+    <div class="centered-container">
+        <div class="toc"></div>
+        <article class="post">
+            <svelte:component this={data.content} />
+        </article>
+    </div>
 </div>
 
 <style>
+    .container {
+        position: relative;
+    }
     .post-header {
         position: relative;
         display: flex;
@@ -101,7 +107,7 @@ import type { PageData } from "./$types";
         max-width: 50rem;
         margin-left: auto;
         margin-right: auto;
-        text-shadow: #ffffff50 0 0 20px;
+        text-shadow: #2b0614ff 0 0 40px;
     }
     .post-header.no-banner {
         height: 15rem;
@@ -112,7 +118,7 @@ import type { PageData } from "./$types";
         object-fit: cover;
         z-index: 1;
         top: 0;
-        margin-bottom: -5rem;
+        margin-bottom: -25vh;
         mask-image: linear-gradient(
             to bottom,
             rgba(0, 0, 0, 1) 75%,
@@ -124,6 +130,7 @@ import type { PageData } from "./$types";
             rgba(0, 0, 0, 0) 100%
         );
     }
+
 
     .toc {
         position: sticky;
@@ -164,7 +171,6 @@ import type { PageData } from "./$types";
         justify-content: center;
         margin-left: auto;
         margin-right: auto;
-        width: 100%;
         max-width: 60rem;
         padding-left: 2rem;
         padding-right: 2rem;
@@ -182,6 +188,9 @@ import type { PageData } from "./$types";
     :global(code) {
         width: 100%;
     }
+    :global(.ytvid){
+        aspect-ratio: 16/9;
+    }
 
     @media (max-width: 768px) {
         .toc {
@@ -196,6 +205,12 @@ import type { PageData } from "./$types";
             flex-direction: column;
             padding-left: 0.5rem;
             padding-right: 0.5rem;
+            background: color(#121212);
+
+        }
+
+        .cover-banner {
+            margin-bottom: 0rem;
         }
     }
 

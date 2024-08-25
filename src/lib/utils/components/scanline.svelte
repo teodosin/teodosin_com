@@ -33,14 +33,14 @@
 
 <style>
     .nav-div {
-        height: 1px;
+        height: 2px;
         width: 100%;
         background: linear-gradient(
             to right,
             transparent,
-            #ffbd2d80 calc(var(--cursor-x) * 100% - 10%),
-            #ffbd2d calc(var(--cursor-x) * 100%),
-            #ffbc2d80 calc(var(--cursor-x) * 100% + 10%),
+            var(--main-highlight-dim-2) calc(var(--cursor-x) * 100% - 10%),
+            var(--main-highlight) calc(var(--cursor-x) * 100%),
+            var(--main-highlight-dim-2) calc(var(--cursor-x) * 100% + 10%),
             transparent
         );
     }
