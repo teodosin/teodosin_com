@@ -95,7 +95,7 @@
 		--main-highlight-dim-2: #ffbd2d40;
 		--grayish: #daaada;
 		--paragraph: #eeeeee;
-		--subtle-bg: #30123088;
+		--subtle-bg: #20122088;
 	}
 
 	:global(body) {
@@ -162,16 +162,22 @@
 	}
 	.nav-cont {
 		width: 100%;
+		max-width: 60rem;
 		display: grid;
 		grid-column: 3;
+		align-items: center;
+		justify-content: center;
+		margin-left: auto;
+		margin-right: auto;
 		grid-template-columns: 1fr auto 1fr;
 		grid-auto-flow: column;
 		z-index: 1;
 	}
 	.side {
-		padding: 0.5rem;
+		height: 100%;
 		padding-left: 2rem;
 		padding-right: 2rem;
+		max-width: 30rem;
 		display: flex;
 		flex-grow: 1;
 		flex-direction: row;
@@ -189,7 +195,7 @@
 		border: none;
 		opacity: 0.5;
 		cursor: pointer;
-		flex-grow: 0;
+		flex-grow: 1;
 	}
 	.nav-btn:hover {
 		opacity: 1;

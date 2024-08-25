@@ -16,9 +16,7 @@
         });
 
         await tick();
-        const images = document.querySelectorAll(
-            ".centered-container img.cap",
-        );
+        const images = document.querySelectorAll(".centered-container img.cap");
 
         images.forEach((img) => {
             const imageElement = img as HTMLImageElement;
@@ -61,33 +59,35 @@
         }
     });
 
-    const hasNoBannerTag = data.tags && data.tags.includes("no-banner");
-    const banner = data.banner ? data.banner : data.cover;
+    $: hasNoBannerTag = data.tags && data.tags.includes("no-banner");
+    $: banner = data.banner ? data.banner : data.cover;
+
+    $: maincol = data.maincol ? data.maincol : "#00000000";
 
     let scroll = 0;
-
-
 </script>
 
 <svelte:window bind:scrollY={scroll} />
 
 <div class="container">
     {#if !hasNoBannerTag}
-    <!-- svelte-ignore a11y-missing-attribute -->
-    <img
-    class="cover-banner"
-    src={banner}
-    style:transform={`translate3d(0, ${scroll / 2}px, 0)`}
-    />
+        <!-- svelte-ignore a11y-missing-attribute -->
+        <img
+            class="cover-banner"
+            src={banner}
+            style:transform={`translate3d(0, ${scroll / 2}px, 0)`}
+        />
     {/if}
 
     <div class="post-header {hasNoBannerTag ? 'no-banner' : ''}">
         <h1>{data.title}</h1>
         <h3 class="date">{data.date}</h3>
-        <Scanline />
+        <div class="linecont">
+            <Scanline />
+        </div>
     </div>
-    
-    <div class="centered-container">
+
+    <div class="centered-container" style={`--bg: ${maincol}`}>
         <div class="toc"></div>
         <article class="post">
             <svelte:component this={data.content} />
@@ -115,11 +115,11 @@
     }
     .cover-banner {
         width: 100%;
-        max-height: 100vh;
+        max-height: 85vh;
         object-fit: cover;
         z-index: 1;
         top: 0;
-        margin-bottom: -25vh;
+        margin-bottom: -5vh;
         mask-image: linear-gradient(
             to bottom,
             rgba(0, 0, 0, 1) 75%,
@@ -131,7 +131,23 @@
             rgba(0, 0, 0, 0) 100%
         );
     }
-
+    .linecont {
+        width: 100%;
+        mask-image: linear-gradient(
+            to right,
+            transparent,
+            black 10%,
+            black 90%,
+            transparent
+        );
+        -webkit-mask-image: linear-gradient(
+            to right,
+            transparent,
+            black 10%,
+            black 90%,
+            transparent
+        );
+    }
 
     .toc {
         position: sticky;
@@ -164,7 +180,7 @@
         border-left: 1px solid #333;
     }
 
-    .centered-container { 
+    .centered-container {
         position: relative;
         z-index: 100;
         display: flex;
@@ -175,13 +191,20 @@
         max-width: 60rem;
         padding-left: 2rem;
         padding-right: 2rem;
-        background: linear-gradient(to right, #12121200, var(--subtle-bg) 15%, var(--subtle-bg) 85%, #12121200);
+        background: linear-gradient(
+            to right,
+            #12121200,
+            var(--bg) 15%,
+            var(--bg) 85%,
+            #12121200
+        );
+        backdrop-filter: blur(10px);
     }
 
     .post {
         display: flex;
         flex-direction: column;
-        width:  100%;
+        width: 100%;
         max-width: 50rem;
         padding-bottom: 20rem;
     }
@@ -189,7 +212,7 @@
     :global(code) {
         width: 100%;
     }
-    :global(.ytvid){
+    :global(.ytvid) {
         aspect-ratio: 16/9;
     }
 
@@ -207,11 +230,10 @@
             padding-left: 0.5rem;
             padding-right: 0.5rem;
             background: color(#121212);
-
         }
 
         .cover-banner {
-            margin-bottom: 0rem;
+            margin-bottom: -3rem;
         }
     }
 
@@ -230,7 +252,7 @@
     }
     .centered-container :global(.caption) {
         text-align: center;
-        
+
         font-size: 1rem;
         color: #999999;
         margin-top: -0.5rem;
@@ -278,5 +300,4 @@
         margin-top: 1rem;
         margin-bottom: 1rem;
     }
-
 </style>

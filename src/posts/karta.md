@@ -1,6 +1,6 @@
 ---
 title: "Karta"
-date: "2024-08-22"
+date: ""
 description: "Creative Tool"
 categories: ["tool", "programming"]
 tags: ["no-banner", "tool"]

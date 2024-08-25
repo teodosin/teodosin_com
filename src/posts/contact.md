@@ -1,6 +1,6 @@
 ---
 title: "Contact"
-date: "2024-07-22"
+date: ""
 description: "Get in touch"
 categories: ["about"]
 tags: ["no-banner"]

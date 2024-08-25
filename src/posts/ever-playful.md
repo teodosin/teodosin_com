@@ -1,11 +1,12 @@
 ---
 title: "Ever Playful"
-date: "2022-08-05"
+date: "August 2022"
 description: "Surreal Animation Loop"
 categories: ["animation", "personal"]
 tags: ["animation"]
 cover: "ever_playful/playful_screencap.png"
 banner: "ever_playful/playful_1080.gif"
+maincol: "#20122080"
 ---
 
 _Ever Playful_ is a surreal animation loop made as a personal project. 
