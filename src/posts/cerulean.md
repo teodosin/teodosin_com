@@ -1,6 +1,6 @@
 ---
 title: "Halysis - Cerulean"
-date: "2020-12-08"
+date: "August 2020"
 description: "Album cover set for Halysis' debut album"
 categories: ["professional", "album cover"]
 tags: []
@@ -11,7 +11,7 @@ I was asked to create a set of album covers for [Halysis](https://www.instagram.
 
 I drew five sets of sketches for the three covers, exploring different compositions and subjects. 
 
-![Batch of sketches on sticky notes](halysis_cerulean/sketches1.jpg)
+![Batch of sketches on sticky notes](halysis_cerulean/sketches1.jpg){.cap}
 
 Sketching on sticky notes and overlapping them in this way helped me focus on 
 

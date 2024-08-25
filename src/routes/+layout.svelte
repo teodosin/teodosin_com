@@ -52,8 +52,7 @@
 			</button>
 		</div>
 
-		<canvas class="logo" bind:this={riv_logo} width="100" height="100"
-		></canvas>
+		<canvas class="logo" bind:this={riv_logo} width="100" height="100"></canvas>
 
 		<div class="side">
 			<button
@@ -94,8 +93,9 @@
 		--main-highlight: #ffbd2d;
 		--main-highlight-dim: #ffbd2d80;
 		--main-highlight-dim-2: #ffbd2d40;
+		--grayish: #daaada;
 		--paragraph: #eeeeee;
-		--subtle-bg: #301230;
+		--subtle-bg: #30123088;
 	}
 
 	:global(body) {

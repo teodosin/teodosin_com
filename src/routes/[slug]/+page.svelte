@@ -1,7 +1,7 @@
 <!-- src/routes/[slug]/+page.svelte -->
 <script lang="ts">
     import Scanline from "$lib/utils/components/scanline.svelte";
-import type { PageData } from "./$types";
+    import type { PageData } from "./$types";
     import { afterUpdate, onMount, tick } from "svelte";
 
     export let data: PageData;
@@ -17,7 +17,7 @@ import type { PageData } from "./$types";
 
         await tick();
         const images = document.querySelectorAll(
-            ".centered-container :global(.img.cap)",
+            ".centered-container img.cap",
         );
 
         images.forEach((img) => {
@@ -83,6 +83,7 @@ import type { PageData } from "./$types";
 
     <div class="post-header {hasNoBannerTag ? 'no-banner' : ''}">
         <h1>{data.title}</h1>
+        <h3 class="date">{data.date}</h3>
         <Scanline />
     </div>
     
@@ -174,7 +175,7 @@ import type { PageData } from "./$types";
         max-width: 60rem;
         padding-left: 2rem;
         padding-right: 2rem;
-        background: linear-gradient(to right, #12121200, #12121290 15%, #12121290 85%, #12121200);
+        background: linear-gradient(to right, #12121200, var(--subtle-bg) 15%, var(--subtle-bg) 85%, #12121200);
     }
 
     .post {
@@ -229,16 +230,20 @@ import type { PageData } from "./$types";
     }
     .centered-container :global(.caption) {
         text-align: center;
-        font-size: 0.8rem;
-        color: #666;
-        margin-top: 0.5rem;
+        
+        font-size: 1rem;
+        color: #999999;
+        margin-top: -0.5rem;
+        margin-bottom: 1rem;
     }
 
     .date {
         margin-top: -2rem;
-        margin-bottom: 3rem;
-        font-size: 0.8rem;
+        margin-bottom: 1rem;
+        font-size: 1.4rem;
         font-style: italic;
+        color: var(--grayish);
+        text-shadow: var(--subtle-bg) 0 0 20px;
     }
 
     :global(ul) {
