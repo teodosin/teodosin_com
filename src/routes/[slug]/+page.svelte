@@ -3,21 +3,21 @@
     import Scanline from "$lib/utils/components/scanline.svelte";
     import type { PageData } from "./$types";
     import { afterUpdate, onMount, tick } from "svelte";
+    import { afterNavigate } from "$app/navigation";
 
     export let data: PageData;
 
-    onMount(async () => {
-        const headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
-        headers.forEach((header, index) => {
-            if (header.textContent !== null) {
-                const ref = header.textContent.toLowerCase().replace(/ /g, "-");
-                header.id = ref;
-            }
+    async function generateCaptions() {
+        // Clear the captions from previous page
+        const captions = document.querySelectorAll(".caption");
+        captions.forEach((caption) => {
+            caption.remove();
         });
 
         await tick();
-        const images = document.querySelectorAll(".centered-container img.cap");
 
+        // Generate new captions
+        const images = document.querySelectorAll(".centered-container img.cap");
         images.forEach((img) => {
             const imageElement = img as HTMLImageElement;
             const captionText = imageElement.alt;
@@ -29,6 +29,16 @@
                     caption,
                     imageElement.nextSibling,
                 );
+            }
+        });
+    }
+
+    onMount(async () => {
+        const headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+        headers.forEach((header, index) => {
+            if (header.textContent !== null) {
+                const ref = header.textContent.toLowerCase().replace(/ /g, "-");
+                header.id = ref;
             }
         });
     });
@@ -57,6 +67,10 @@
                 });
             }
         }
+    });
+
+    afterNavigate(() => {
+        generateCaptions();
     });
 
     $: hasNoBannerTag = data.tags && data.tags.includes("no-banner");
@@ -235,6 +249,10 @@
         .cover-banner {
             margin-bottom: -3rem;
         }
+
+        .centered-container :global(.caption) {
+            font-size: 0.8rem;
+        }
     }
 
     .centered-container :global(img) {
@@ -252,7 +270,7 @@
     }
     .centered-container :global(.caption) {
         text-align: center;
-
+        font-style: italic;
         font-size: 1rem;
         color: #999999;
         margin-top: -0.5rem;

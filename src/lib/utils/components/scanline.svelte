@@ -2,6 +2,7 @@
     import { onMount } from "svelte";
 
     let cursorX = 0;
+    let cursorDist = 0;
     let cursorW = 10;
     let componentRect: [number, number];
     let comp: HTMLElement;
