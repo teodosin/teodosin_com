@@ -110,7 +110,7 @@
 
 <style>
 	@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Corben:wght@400;700&family=DM+Serif+Text:ital@0;1&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
+	@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wght@100..900&display=swap');
 	/* Color palette */
 	:global(:root) {
 		--background-color: #121212;
@@ -128,7 +128,7 @@
 	}
 
 	:global(body) {
-		font-family: "Corben", serif;
+		font-family: "Noto Serif Georgian", serif;
 		min-height: 100vh;
 		margin: 0;
 		font-size: 1rem;
