@@ -39,11 +39,20 @@
             }
         };
 
+        const handleScroll = () => {
+            handleMouseMove({
+                clientX: window.scrollX + window.innerWidth / 2,
+                clientY: window.scrollY + window.innerHeight / 2,
+            });
+        }
+
         updatePosition();
         window.addEventListener("resize", updatePosition);
+        window.addEventListener("scroll", handleScroll);
 
         return () => {
             window.removeEventListener("resize", updatePosition);
+            window.removeEventListener("scroll", handleScroll);
         };
     });
 </script>

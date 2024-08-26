@@ -5,7 +5,7 @@
 	import * as rive from "@rive-app/canvas";
 
 	import { onMount } from "svelte";
-	import { goto } from "$app/navigation";
+	import { afterNavigate, goto } from "$app/navigation";
 
 	import { page } from "$app/stores";
 
@@ -13,34 +13,52 @@
 
 	let riv_logo: HTMLCanvasElement;
 
-	
-	let currentPage;
+	let currentPage: string;
 	$: currentPage = $page.url.pathname;
-		
+
+	let monoTrigger: rive.StateMachineInput | undefined;
+	let eyeTrigger: rive.StateMachineInput | undefined;
+
+	function changeState() {
+		if (currentPage === "/gallery") {
+			if (eyeTrigger) {
+				eyeTrigger.fire();
+			}
+		} else {
+			if (monoTrigger) {
+				monoTrigger.fire();
+			}
+		}
+	}
+
 	onMount(async () => {
-		console.log(currentPage === "/gallery");
 		const rlogo = new rive.Rive({
-			src: "/teodosin_logo.riv",
+			src: "/teodosin_logo3.riv",
 			canvas: riv_logo,
 			autoplay: true,
-			stateMachines: "toggle",
+			stateMachines: "states",
 			onLoad: () => {
 				rlogo.resizeDrawingSurfaceToCanvas();
+				const inputs = rlogo.stateMachineInputs("states");
+
+				monoTrigger = inputs.find((i) => i.name === "to-mono");
+				eyeTrigger = inputs.find((i) => i.name === "to-eye");
+			},
+			onStateChange: () => {
+				changeState();
 			},
 		});
 	});
 
+	afterNavigate(() => {
+		changeState();
+	});
 </script>
-
 
 <nav class="nav">
 	<div class="nav-cont">
 		<div class="side">
-			<button
-				class="nav-btn nav-btn-placeholder"
-			>
-				Spooky
-			</button>
+			<button class="nav-btn nav-btn-placeholder"> Spooky </button>
 			<button
 				class:active={currentPage === "/portfolio"}
 				class="nav-btn"
@@ -57,16 +75,10 @@
 			</button>
 		</div>
 
-		<canvas class="logo" bind:this={riv_logo} width="100" height="100"></canvas>
+		<canvas class="logo" bind:this={riv_logo} width="100" height="100"
+		></canvas>
 
 		<div class="side">
-			<button
-				class:active={currentPage === "/gallery"}
-				class="nav-btn"
-				on:click={() => goto("/gallery")}
-			>
-				Gallery
-			</button>
 			<button
 				class:active={currentPage === "/about"}
 				class="nav-btn"
@@ -81,6 +93,13 @@
 			>
 				Contact
 			</button>
+			<button
+				class:active={currentPage === "/gallery"}
+				class="nav-btn nav-btn-placeholder"
+				on:click={() => goto("/gallery")}
+			>
+				Gallery
+			</button>
 		</div>
 	</div>
 
@@ -93,7 +112,7 @@
 	@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Corben:wght@400;700&family=DM+Serif+Text:ital@0;1&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 	/* Color palette */
-	:global(:root){
+	:global(:root) {
 		--background-color: #121212;
 		--main-highlight: #ffbd2d;
 		--main-highlight-rgb: 255, 189, 45;
@@ -102,6 +121,10 @@
 		--grayish: #daaada;
 		--paragraph: #eeeeee;
 		--subtle-bg: #20122088;
+	}
+
+	:global(html) {
+		scrollbar-gutter: stable;
 	}
 
 	:global(body) {
@@ -202,7 +225,9 @@
 		opacity: 0.5;
 		cursor: pointer;
 		flex-grow: 1;
-		transition: opacity 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
+		transition:
+			opacity 0.2s ease-in-out,
+			text-shadow 0.2s ease-in-out;
 	}
 	.nav-btn:hover {
 		opacity: 1;
@@ -240,7 +265,7 @@
 	}
 
 	@media (max-width: 768px) {
-		:global(body){
+		:global(body) {
 			font-size: 0.8rem;
 		}
 		:global(h1) {

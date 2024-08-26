@@ -2,7 +2,7 @@
   import { base } from "$app/paths";
 
   import { createEventDispatcher } from "svelte";
-    import Scanline from "./scanline.svelte";
+  import Scanline from "./scanline.svelte";
 
   const dispatch = createEventDispatcher();
 
@@ -54,13 +54,10 @@
     background-position: center;
 
     /* Add transition for opacity */
-    transition: opacity 0.2s ease-in-out, box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
-  }
-  .post:hover {
-    box-shadow: 0px 0px 120px 2px rgb(0, 0, 0);
-    transform: scale(
-      1.005
-    ); /* On hover, enlarge the background image slightly */
+    transition:
+      opacity 0.2s ease-in-out,
+      box-shadow 0.2s ease-in-out,
+      transform 0.2s ease-in-out;
   }
 
   .text-cont {
@@ -72,18 +69,19 @@
     align-content: end;
     user-select: none;
     text-align: center;
-    opacity: 0;
-    transition: background 0.3s ease-in-out, opacity 0.3s ease-in-out;
   }
   .post-title {
     margin-top: 0.4rem;
     position: relative;
     font-size: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
   }
   .post-desc {
     word-wrap: break-word;
     margin-top: -1.5rem;
-    transition: background 0.6s ease-in-out, opacity 0.6s ease-in-out;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
   }
   .verty {
     transform: scaleY(0); /* Initially scale the description's height to 0 */
@@ -94,9 +92,18 @@
   }
 
   @media (min-width: 768px) {
+    .post:hover {
+      box-shadow: 0px 0px 120px 2px rgb(0, 0, 0);
+      transform: scale(
+        1.005
+      ); /* On hover, enlarge the background image slightly */
+    }
     .post:hover .text-cont {
       /* max-height: 100px;  */
       /* transform: scaleY(1);  */
+      opacity: 1;
+    }
+    .post:hover .post-title {
       opacity: 1;
     }
     .post:hover .post-desc {
@@ -108,10 +115,12 @@
   }
 
   @media (max-width: 768px) {
+    .text-cont {
+      opacity: 0;
+    }
     .post-title {
       font-size: 1.2rem;
     }
-
     .post-desc {
       font-size: 0.8rem;
     }

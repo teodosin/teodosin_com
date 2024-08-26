@@ -77,7 +77,6 @@
 
     .grid-container {
         display: grid;
-        margin-top: 2rem;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 10px;
         margin-bottom: 20rem;

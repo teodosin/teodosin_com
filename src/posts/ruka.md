@@ -4,7 +4,7 @@ date: "2024-5-30"
 description: "Custom controller glove"
 categories: ["professional", "album cover"]
 tags: []
-cover: "ruka/glove.jpg"
+cover: "ruka/ruka.jpeg"
 ---
 
 RUKA is a controller glove I designed and built from scratch during the Digital Fabrication minor courses in my final year of studies at Aalto University. It is a custom-made glove that allows for precise and intuitive control of digital content using hand gestures. The entire minor subject served as a thorough and intensive introduction to the tools and practices of electronics, CAD modeling, 3D printing and more. 
