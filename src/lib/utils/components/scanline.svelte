@@ -2,16 +2,27 @@
     import { onMount } from "svelte";
 
     let cursorX = 0;
-    let cursorDist = 0;
+    let cursorY = 0;
+    let elementTop = 0;
+    let elementBottom = 0;
+    let windowHeight = 0;
+
     let cursorW = 10;
     let componentRect: [number, number];
     let comp: HTMLElement;
 
-    function handleMouseMove(event: { clientX: number }) {
-        // cursorX = event.clientX / window.innerWidth;
+    function handleMouseMove(event: { clientX: number; clientY: number }) {
         cursorX =
             (event.clientX - componentRect[0]) /
             (componentRect[1] - componentRect[0]);
+        const rect = comp.getBoundingClientRect();
+        const elementCenterY = (rect.top + rect.bottom) / 2;
+        const distanceY = Math.abs(event.clientY - elementCenterY);
+
+        const maxDistance = window.innerHeight / 2;
+        const dimFactor = 1 - Math.min(distanceY / maxDistance, 1);
+
+        comp.style.setProperty("--highlight-intensity", dimFactor.toString());
     }
 
     onMount(() => {
@@ -52,10 +63,17 @@
         background: linear-gradient(
             to right,
             transparent,
-            var(--main-highlight-dim-2)
+            rgba(
+                    var(--main-highlight-rgb),
+                    calc(0.2 * var(--highlight-intensity))
+                )
                 calc(var(--cursor-x) * 100% - var(--cursor-w)),
-            var(--main-highlight) calc(var(--cursor-x) * 100%),
-            var(--main-highlight-dim-2)
+            rgba(var(--main-highlight-rgb), var(--highlight-intensity))
+                calc(var(--cursor-x) * 100%),
+            rgba(
+                    var(--main-highlight-rgb),
+                    calc(0.2 * var(--highlight-intensity))
+                )
                 calc(var(--cursor-x) * 100% + var(--cursor-w)),
             transparent
         );

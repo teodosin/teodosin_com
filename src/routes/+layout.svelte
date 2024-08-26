@@ -37,6 +37,11 @@
 	<div class="nav-cont">
 		<div class="side">
 			<button
+				class="nav-btn nav-btn-placeholder"
+			>
+				Spooky
+			</button>
+			<button
 				class:active={currentPage === "/portfolio"}
 				class="nav-btn"
 				on:click={() => goto("/")}
@@ -91,6 +96,7 @@
 	:global(:root){
 		--background-color: #121212;
 		--main-highlight: #ffbd2d;
+		--main-highlight-rgb: 255, 189, 45;
 		--main-highlight-dim: #ffbd2d80;
 		--main-highlight-dim-2: #ffbd2d40;
 		--grayish: #daaada;
@@ -196,15 +202,21 @@
 		opacity: 0.5;
 		cursor: pointer;
 		flex-grow: 1;
+		transition: opacity 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
 	}
 	.nav-btn:hover {
 		opacity: 1;
 		text-shadow: #eeeeff 0px 0px 10px;
-		transition: text-shadow 0.3s ease;
 	}
 	.nav-btn:active {
 		font-style: normal;
 		text-shadow: #eeeeff 0px 0px 16px;
+	}
+	.nav-btn-placeholder {
+		color: #00000000;
+		cursor: default;
+		user-select: none;
+		text-shadow: none;
 	}
 
 	/* width */

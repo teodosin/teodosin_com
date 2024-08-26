@@ -54,11 +54,10 @@
     background-position: center;
 
     /* Add transition for opacity */
-    transition: opacity 0.3s ease;
+    transition: opacity 0.2s ease-in-out, box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
   }
   .post:hover {
     box-shadow: 0px 0px 120px 2px rgb(0, 0, 0);
-    transition: box-shadow 0.3s ease;
     transform: scale(
       1.005
     ); /* On hover, enlarge the background image slightly */
@@ -74,8 +73,7 @@
     user-select: none;
     text-align: center;
     opacity: 0;
-    transition: background 0.3s ease; /* Add transition for smooth effect */
-    transition: opacity 0.3s ease; /* Add transition for opacity */
+    transition: background 0.3s ease-in-out, opacity 0.3s ease-in-out;
   }
   .post-title {
     margin-top: 0.4rem;
@@ -85,8 +83,7 @@
   .post-desc {
     word-wrap: break-word;
     margin-top: -1.5rem;
-    transition: background 0.6s ease;
-    transition: opacity 0.6s ease;
+    transition: background 0.6s ease-in-out, opacity 0.6s ease-in-out;
   }
   .verty {
     transform: scaleY(0); /* Initially scale the description's height to 0 */
