@@ -79,7 +79,7 @@
 <nav class="nav">
 	<div class="nav-cont">
 		<div class="side">
-			<button class="nav-btn nav-btn-placeholder"> Spooky </button>
+			<!-- <button class="nav-btn nav-btn-placeholder"> Spooky </button> -->
 			<button
 				class:active={currentPage === "/gallery"}
 				class="nav-btn"
@@ -114,13 +114,13 @@
 			>
 				Contact
 			</button>
-			<button
+			<!-- <button
 				class:active={currentPage === "/gallery"}
 				class="nav-btn nav-btn-placeholder"
 				on:click={() => goto("/gallery")}
 			>
 				Gallery
-			</button>
+			</button> -->
 		</div>
 	</div>
 
