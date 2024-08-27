@@ -4,7 +4,7 @@
 	import "../styles/code.css";
 	import * as rive from "@rive-app/canvas";
 
-	import { onMount } from "svelte";
+	import { onMount, tick } from "svelte";
 	import { afterNavigate, goto } from "$app/navigation";
 
 	import { page } from "$app/stores";
@@ -18,22 +18,47 @@
 
 	let monoTrigger: rive.StateMachineInput | undefined;
 	let eyeTrigger: rive.StateMachineInput | undefined;
+	let graphTrigger: rive.StateMachineInput | undefined;
 
-	function changeState() {
-		if (currentPage === "/gallery") {
-			if (eyeTrigger) {
-				eyeTrigger.fire();
-			}
-		} else {
-			if (monoTrigger) {
-				monoTrigger.fire();
-			}
+	async function changeState() {
+		await tick();
+		switch (currentPage) {
+			case "/about":
+				if (monoTrigger) {
+					console.log("triggering to mono");
+					monoTrigger.fire();
+				}
+				break;
+			case "/gallery":
+				if (eyeTrigger) {
+					console.log("triggering to eye");
+					eyeTrigger.fire();
+				}
+				break;
+			case "/karta":
+				if (graphTrigger) {
+					console.log("triggering to graph");
+					graphTrigger.fire();
+				}
+				break;
+			case "/contact":
+				if (monoTrigger) {
+					console.log("triggering to mono");
+					monoTrigger.fire();
+				}
+				break;
+			default:
+				if (eyeTrigger) {
+					console.log("triggering to eye");
+					eyeTrigger.fire();
+				}
+				break;
 		}
 	}
 
 	onMount(async () => {
 		const rlogo = new rive.Rive({
-			src: "/teodosin_logo3.riv",
+			src: "/teodosin_logo5.riv",
 			canvas: riv_logo,
 			autoplay: true,
 			stateMachines: "states",
@@ -43,6 +68,7 @@
 
 				monoTrigger = inputs.find((i) => i.name === "to-mono");
 				eyeTrigger = inputs.find((i) => i.name === "to-eye");
+				graphTrigger = inputs.find((i) => i.name === "to-graph");
 			},
 			onStateChange: () => {
 				changeState();
@@ -60,7 +86,7 @@
 		<div class="side">
 			<button class="nav-btn nav-btn-placeholder"> Spooky </button>
 			<button
-				class:active={currentPage === "/portfolio"}
+				class:active={currentPage === "/gallery"}
 				class="nav-btn"
 				on:click={() => goto("/")}
 			>
