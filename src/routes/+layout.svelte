@@ -25,31 +25,26 @@
 		switch (currentPage) {
 			case "/about":
 				if (monoTrigger) {
-					console.log("triggering to mono");
 					monoTrigger.fire();
 				}
 				break;
 			case "/gallery":
 				if (eyeTrigger) {
-					console.log("triggering to eye");
 					eyeTrigger.fire();
 				}
 				break;
 			case "/karta":
 				if (graphTrigger) {
-					console.log("triggering to graph");
 					graphTrigger.fire();
 				}
 				break;
 			case "/contact":
 				if (monoTrigger) {
-					console.log("triggering to mono");
 					monoTrigger.fire();
 				}
 				break;
 			default:
 				if (eyeTrigger) {
-					console.log("triggering to eye");
 					eyeTrigger.fire();
 				}
 				break;

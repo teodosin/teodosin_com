@@ -4,7 +4,7 @@ date: "August 2022"
 description: "Surreal Animation Loop"
 categories: ["animation", "personal"]
 tags: ["animation"]
-cover: "ever_playful/playful_screencap.png"
+cover: "ever_playful/playful_cover.png"
 banner: "ever_playful/playful_1080.gif"
 maincol: "#20122080"
 ---
