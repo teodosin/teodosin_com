@@ -1,16 +1,14 @@
-<script>
+<script lang="ts">
   import { base } from "$app/paths";
 
   import { createEventDispatcher } from "svelte";
   import Scanline from "./scanline.svelte";
+  import type { Post } from "$lib/utils/index.ts";
 
   const dispatch = createEventDispatcher();
 
-  export let post;
-  /**
-   * @type {any}
-   */
-  export let selectedPost;
+  export let post: Post;
+  export let selectedPost: string;
 </script>
 
 <a class="post-wrapper" href={`${base}/${post.path}`}>

@@ -1,9 +1,22 @@
 
-interface PostFilter {
+export interface PostFilter {
     categoryWhitelist?: string[];
     categoryBlocklist?: string[];
     tagWhitelist?: string[];
     tagBlocklist?: string[];
+}
+
+export interface Post {
+    meta: {
+        title: string;
+        date: string;
+        description: string;
+        categories: string[];
+        tags: string[];
+        cover?: string;
+        banner?: string;
+    };
+    path: string;
 }
 
 export const fetchMarkdownPosts = async (filter: PostFilter = {}) => {
@@ -16,10 +29,12 @@ export const fetchMarkdownPosts = async (filter: PostFilter = {}) => {
             const { metadata } = await resolver();
             const postPath = path.slice(11, -3);
 
-            return {
+            let post: Post = {
                 meta: metadata,
                 path: postPath
             };
+
+            return post;
         })
     );
 
