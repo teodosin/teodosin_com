@@ -2,10 +2,10 @@
     import { onMount } from "svelte";
 
     let cursorX = 0;
-    let cursorY = 0;
-    let elementTop = 0;
-    let elementBottom = 0;
-    let windowHeight = 0;
+    // let cursorY = 0;
+    // let elementTop = 0;
+    // let elementBottom = 0;
+    // let windowHeight = 0;
 
     let cursorW = 10;
     let componentRect: [number, number];
