@@ -22,4 +22,10 @@ Finding the drawing again was an opportunity for me to work on not only the draw
 
 As I'm writing this, I am also working on a video of the drawing process. I will speak more in the video about my recent thoughts on finishing projects. 
 
+I decided to make the drawing a spiritual successor to my [Heart of the World](heart-of-the-world)} series. In honor of its nameless beast, I called the drawing Name of the World. 
+
 ![Finished drawing, Name of the World](nameoftheworld/final.png)
+
+*“A message heeded by those selected few. Where no one looks, they’ll be found. Let them gaze. Only there can they be turned. In their abode, deep below, kept dark, for fear of the nameless.”*
+
+- Name of the World
