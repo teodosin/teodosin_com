@@ -1,1 +1,0 @@
-import{s as e}from"./scheduler.BOcuARYx.js";import{S as a,i as s}from"./index.BragKJvw.js";const l={title:"",date:"",description:"",categories:[""],tags:["draft"],cover:"",maincol:"#201220c0"};class n extends a{constructor(t){super(),s(this,t,null,null,e,{})}}export{n as default,l as metadata};
