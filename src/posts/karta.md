@@ -2,7 +2,7 @@
 title: "Karta"
 date: ""
 description: "Creative Tool"
-categories: ["tool", "programming"]
+categories: ["tool", "programming", "karta"]
 tags: ["no-banner", "tool"]
 cover: "karta/logo.png"
 ---

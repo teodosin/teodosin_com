@@ -112,6 +112,8 @@
 <style>
     .container {
         position: relative;
+        min-height: 100rem;
+        
     }
     .post-header {
         position: relative;
@@ -213,6 +215,7 @@
             #12121200
         );
         backdrop-filter: blur(10px);
+        height: 100%;
     }
 
     .post {
